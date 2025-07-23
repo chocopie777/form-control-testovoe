@@ -21,5 +21,9 @@ export const useAccountStore = defineStore('account', () => {
     accounts.value = accounts.value.filter(item => item.id !== id)
   }
 
-  return { accounts, createAccount, deleteAccount }
+  function editAccount(id: number, data: Account) {
+    accounts.value = accounts.value.map(account => account.id === id ? {...data} : account)
+  }
+
+  return { accounts, createAccount, deleteAccount, editAccount }
 })
